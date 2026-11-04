@@ -10,3 +10,4 @@ test-out/
 .DS_Store
 legacy/
 HANDOFF.md
+bin/

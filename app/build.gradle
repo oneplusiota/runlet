@@ -14,6 +14,21 @@ android {
         versionCode 1
         versionName '0.2.0'
     }
+    signingConfigs {
+        // CI signs every debug build with one fixed, committed key so each download installs over the last
+        // one on a phone. It is a throwaway test key (public, well-known password), never used for a release.
+        ci {
+            storeFile file('ci-debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+    buildTypes {
+        debug {
+            if (System.getenv('CI')) signingConfig signingConfigs.ci
+        }
+    }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
     buildFeatures { compose true }
     testOptions { unitTests { includeAndroidResources = true; all { maxHeapSize = "2g" } } }

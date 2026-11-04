@@ -1,0 +1,7 @@
+# Paste the real poses and durations here.
+# The video has not yet been transcribed.
+# https://youtu.be/dAqQqmaI9vY
+routine "Morning yoga"
+alerts both
+
+# Syntax: stage "Pose name" 30s

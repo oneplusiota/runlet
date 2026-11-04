@@ -1,0 +1,8 @@
+routine "Quick test"
+alerts both
+log "Testing your phone alerts"
+stage "First stage" 3s
+repeat 2 {
+  stage "Repeat stage" 2s
+}
+notify "All actions ran successfully"

@@ -1,0 +1,42 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+}
+
+android {
+    namespace 'dev.runlet.app'
+    compileSdk 36
+    defaultConfig {
+        applicationId 'dev.runlet'
+        minSdk 30
+        targetSdk 36
+        versionCode 1
+        versionName '0.2.0'
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+    buildFeatures { compose true }
+    testOptions { unitTests { includeAndroidResources = true; all { maxHeapSize = "2g" } } }
+}
+
+kotlin { jvmToolchain(17) }
+
+dependencies {
+    implementation project(':core:platform')
+    implementation platform(libs.compose.bom)
+    implementation libs.compose.ui
+    implementation libs.compose.material3
+    implementation libs.activity.compose
+    implementation libs.lifecycle.viewmodel.compose
+    implementation libs.lifecycle.runtime.compose
+
+    testImplementation libs.junit
+    testImplementation libs.kotlin.test
+    testImplementation libs.coroutines.test
+    testImplementation libs.androidx.test.core
+    testImplementation libs.robolectric
+    testImplementation platform(libs.compose.bom)
+    testImplementation libs.compose.ui.test.junit4
+    debugImplementation platform(libs.compose.bom)
+    debugImplementation libs.compose.ui.test.manifest
+}

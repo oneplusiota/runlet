@@ -1,0 +1,8 @@
+# Your first automation · 4 minutes 50 seconds
+routine "French press"
+alerts both
+
+stage "Bloom" 30s
+stage "Steep" 210s
+stage "Press" 20s
+stage "Pour" 30s
